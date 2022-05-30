@@ -1,11 +1,11 @@
-@extends('layouts.app')
 
 
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 <div class="row" style="padding-top:120px">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left d-flex justify-content-between align-items-center">
-            <h1> {{ $recipe->title }}</h1>
+            <h1> <?php echo e($recipe->title); ?></h1>
             <div class="iconsContainer">
                 <i class="fa-solid fa-star pointer"></i>
                 <i class="fa-solid fa-star pointer"></i>
@@ -19,37 +19,37 @@
 </div>
 <dl class="row">
     <dt class="col-sm-3">Nazwa potrawy</dt>
-    <dd class="col-sm-9">{{ $recipe->title }}</dd>
+    <dd class="col-sm-9"><?php echo e($recipe->title); ?></dd>
     <HR NOSHADE>
 
     <dt class="col-sm-3">Zdjęcie</dt>
-    <dd class="col-sm-9"><img src="{{ asset('uploads/recipes/'.$recipe->photo) }}" width="300px" height="300px" alt=""></dd>
+    <dd class="col-sm-9"><img src="<?php echo e(asset('uploads/recipes/'.$recipe->photo)); ?>" width="300px" height="300px" alt=""></dd>
     <HR NOSHADE>
 
     <dt class="col-sm-3">Składniki</dt>
-    <dd class="col-sm-9">{{ $recipe->products }}</dd>
+    <dd class="col-sm-9"><?php echo e($recipe->products); ?></dd>
     <HR NOSHADE>
 
     <dt class="col-sm-3 text-truncate">Maszyny kuchenne</dt>
-    <dd class="col-sm-9">{{ $recipe->food_processors }}</dd>
+    <dd class="col-sm-9"><?php echo e($recipe->food_processors); ?></dd>
     <HR NOSHADE>
 
     <dt class="col-sm-3 text-truncate">Czas przygotowania</dt>
-    <dd class="col-sm-9">{{ $recipe->time }} min</dd>
+    <dd class="col-sm-9"><?php echo e($recipe->time); ?> min</dd>
     <HR NOSHADE>
 
     <dt class="col-sm-3 text-truncate">Trudność przygotowania</dt>
-    <dd class="col-sm-9">{{ $recipe->level }}/5</dd>
+    <dd class="col-sm-9"><?php echo e($recipe->level); ?>/5</dd>
     <HR NOSHADE>
 
     <dt class="col-sm-3 text-truncate">Opisz przygotowania</dt>
-    <dd class="col-sm-9">{{ $recipe->description }}</dd>
+    <dd class="col-sm-9"><?php echo e($recipe->description); ?></dd>
 </dl>
 </dd>
 </dl>
 <br><br>
 <div class="pull-right d-flex justify-content-sm-between">
-    <a class="btn btn-primary" href="{{ route('recipes.index') }}" title="Powrót" class="fas fa-backward ">Powrót do poprzedniej strony</a>
+    <a class="btn btn-primary" href="<?php echo e(route('recipes.index')); ?>" title="Powrót" class="fas fa-backward ">Powrót do poprzedniej strony</a>
     <button class="shareButton">Share <i class="fa-brands fa-facebook-square"></i></button>
 </div>
 <br></br>
@@ -78,4 +78,5 @@
         <button type="submit" class="mt-3 submitButton">Opublikuj kometarz</button>
     </form>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\ZeroWaste\zeroWaste\example\resources\views/recipes/show.blade.php ENDPATH**/ ?>

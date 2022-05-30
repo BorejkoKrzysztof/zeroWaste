@@ -9,12 +9,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
     <style type="text/css">
-
         @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
-  
 
-        body{
+
+        body {
 
             margin: 0;
 
@@ -32,25 +31,22 @@
 
         }
 
-        .navbar-laravel
+        .navbar-laravel {
 
-        {
-
-            box-shadow: 0 2px 4px rgba(0,0,0,.04);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .04);
 
         }
 
-        .navbar-brand , .nav-link, .my-form, .login-form
-
-        {
+        .navbar-brand,
+        .nav-link,
+        .my-form,
+        .login-form {
 
             font-family: Raleway, sans-serif;
 
         }
 
-        .my-form
-
-        {
+        .my-form {
 
             padding-top: 1.5rem;
 
@@ -58,9 +54,7 @@
 
         }
 
-        .my-form .row
-
-        {
+        .my-form .row {
 
             margin-left: 0;
 
@@ -68,9 +62,7 @@
 
         }
 
-        .login-form
-
-        {
+        .login-form {
 
             padding-top: 1.5rem;
 
@@ -78,43 +70,40 @@
 
         }
 
-        .login-form .row
-
-        {
+        .login-form .row {
 
             margin-left: 0;
 
             margin-right: 0;
 
         }
-
     </style>
 
 </head>
 
 <body>
 
-    
 
-<nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
 
-    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
 
-        <a class="navbar-brand" href="#">Laravel</a>
+        <div class="container">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="#">Laravel</a>
 
-            <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
-        </button>
+                <span class="navbar-toggler-icon"></span>
 
-   
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <ul class="navbar-nav ml-auto">
 
-                @guest
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav ml-auto">
+
+                    @guest
 
                     <li class="nav-item">
 
@@ -128,7 +117,7 @@
 
                     </li>
 
-                @else
+                    @else
 
                     <li class="nav-item">
 
@@ -136,23 +125,23 @@
 
                     </li>
 
-                @endguest
+                    @endguest
 
-            </ul>
+                </ul>
 
-  
+
+
+            </div>
 
         </div>
 
-    </div>
+    </nav>
 
-</nav>
 
-  
 
-@yield('content')
+    @yield('content')
 
-     
+
 
 </body>
 

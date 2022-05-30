@@ -1,38 +1,39 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 
 <head>
 
 
-    <link rel="stylesheet" href="{{ asset('css/jakis.css') }}" />
+    <link rel="stylesheet" href="<?php echo e(asset('css/jakis.css')); ?>" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-    <title>{{ config('app.name', 'ZeroWaste') }}</title>
+    <title><?php echo e(config('app.name', 'ZeroWaste')); ?></title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
 
     <!-- Fonts -->
 
     <!-- ICONS -->
     <script src="https://kit.fontawesome.com/384f58f878.js" crossorigin="anonymous"></script>
     <!-- Styles -->
-    <link href="{{ asset('css/jakis.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('css/jakis.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
 </head>
 
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'ZeroWaste') }}
+                <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
+                    <?php echo e(config('app.name', 'ZeroWaste')); ?>
+
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -54,53 +55,55 @@
                             <a class="nav-link" href="/about">O stronie</a>
                                 </li> -->
                         <li class="nav-item">
-                            @auth
+                            <?php if(auth()->guard()->check()): ?>
                             <a class="nav-link" href="/recipes">Przepisy</a>
                         </li>
-                        @endauth
-                        @auth
-                        @if (Auth::user()->role=='admin')
+                        <?php endif; ?>
+                        <?php if(auth()->guard()->check()): ?>
+                        <?php if(Auth::user()->role=='admin'): ?>
                         <a class="nav-link" href="/users">Użytkownicy</a>
                         </li>
-                        @endif
-                        @endauth
+                        <?php endif; ?>
+                        <?php endif; ?>
 
 
-                        @guest
-                        @if (Route::has('login'))
+                        <?php if(auth()->guard()->guest()): ?>
+                        <?php if(Route::has('login')): ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Zaloguj się') }}</a>
+                            <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo e(__('Zaloguj się')); ?></a>
                         </li>
-                        @endif
+                        <?php endif; ?>
 
-                        @if (Route::has('register'))
+                        <?php if(Route::has('register')): ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Zarejestruj się') }}</a>
+                            <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo e(__('Zarejestruj się')); ?></a>
                         </li>
-                        @endif
-                        @else
+                        <?php endif; ?>
+                        <?php else: ?>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+                                <?php echo e(Auth::user()->name); ?>
+
 
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                <a class="dropdown-item" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Wyloguj się') }}
+                                    <?php echo e(__('Wyloguj się')); ?>
+
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
+                                <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
+                                    <?php echo csrf_field(); ?>
                                 </form>
                             </div>
                         </li>
-                        @endguest
+                        <?php endif; ?>
                     </ul>
-                    @auth
+                    <?php if(auth()->guard()->check()): ?>
 
-                    <form role="search" class="search-form" type="get" action="{{ url('/search') }}">
+                    <form role="search" class="search-form" type="get" action="<?php echo e(url('/search')); ?>">
                         <label>
                             <input style="margin-left:10px" class="form-control" name="query" type="serach" placeholder="Wyszukaj przepis po tytule">
                         </label>
@@ -111,7 +114,7 @@
                         </button>
                     </form>
 
-                    <form role="search" class="search-form" type="get" action="{{ url('/search1') }}">
+                    <form role="search" class="search-form" type="get" action="<?php echo e(url('/search1')); ?>">
                         <label>
                             <input style="margin: 43px; padding: 6px" class="form-control" name="query1" type="search1" placeholder="Wyszukaj przepis po głównym składniku">
                         </label>
@@ -122,15 +125,15 @@
                         </button>
                     </form>
 
-                    @endauth
+                    <?php endif; ?>
                 </div>
             </div>
         </nav>
 
         <main class="py-4 container">
-            @yield('content')
+            <?php echo $__env->yieldContent('content'); ?>
         </main>
     </div>
 </body>
 
-</html>
+</html><?php /**PATH C:\xampp\htdocs\ZeroWaste\zeroWaste\example\resources\views/layouts/app.blade.php ENDPATH**/ ?>

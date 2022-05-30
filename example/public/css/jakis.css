@@ -34,3 +34,83 @@
         overflow: hidden !important;
         text-overflow: ellipsis;
     }
+
+
+
+    .iconsContainer{
+        color: yellow; 
+        font-size: 28px;
+    }
+
+    .pointer{
+        cursor: pointer;
+    }
+    .sekcja-formularz{
+        width: 100%;
+        margin-left: 20%;
+        overflow-x: hidden;
+    }
+
+    .duzy-input-komentarz{
+        width: 80%;
+        height: 250px;
+        float: right;
+        resize: none;
+    }
+
+    .submitButton{
+        width: 20%;
+        height: 7vh;
+        margin-left: 55%;
+        background-color: #fff;
+        border: 2px solid grey ;
+    }
+
+    .shareButton{
+        background-color: #fff;
+        border: solid 2px blue;
+        font-size: 18px;
+        border-radius: 15px;
+        height: 9vh;
+        width: 15vw;
+    }
+
+    .shareButton > i {
+        color: blue;
+        font-size: 22px;
+        margin-left: 2vw;
+    }
+
+    .flexSwitch{
+        flex-direction: row;
+    }
+
+    @media screen and (max-width: 960px) {
+        
+        .sekcja-formularz{
+            width: 100%;
+            margin-left: 5%;
+        }
+
+        .iconsContainer{
+            color: yellow; 
+            font-size: 22px !important;
+            margin-right: 1.5vw;
+        }
+
+        .flexSwitch{
+            flex-direction: column;
+        }
+
+        .shareButton{
+            font-size: 18px;
+            height: 9vh;
+            width: 30vw;
+            margin-left: 2vw;
+        }
+
+        .submitButton{
+            width: 30%;
+            margin-left: 50%;
+        }
+    }
